@@ -1,0 +1,39 @@
+{
+  "name": "@testingrequired/testingrequired.com",
+  "description": "testingrequired.com",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Kylee Tilley <kylee@testingrequired.com>",
+  "dependencies": {
+    "babel-plugin-styled-components": "^1.10.6",
+    "gatsby": "^2.13.41",
+    "gatsby-link": "^2.2.3",
+    "gatsby-plugin-catch-links": "^2.1.2",
+    "gatsby-plugin-google-analytics": "^2.1.4",
+    "gatsby-plugin-react-helmet": "^3.1.2",
+    "gatsby-plugin-styled-components": "^3.1.2",
+    "gatsby-plugin-twitter": "^2.1.2",
+    "gatsby-source-filesystem": "^2.1.6",
+    "gatsby-transformer-remark": "^2.6.9",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.1",
+    "styled-components": "^4.3.2"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write 'src/**/*.js'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/testingrequired/testingrequired.github.io"
+  }
+}
