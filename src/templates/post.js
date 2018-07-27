@@ -1,7 +1,7 @@
-import React from 'react'
-import Helmet from 'react-helmet'
+import React from 'react';
+import Helmet from 'react-helmet';
 export default function Template({ data }) {
-  const post = data.markdownRemark
+  const post = data.markdownRemark;
   return (
     <div className="blog-post-container">
       <Helmet title={`${post.frontmatter.title} - Testing Required`} />
@@ -13,7 +13,7 @@ export default function Template({ data }) {
         />
       </div>
     </div>
-  )
+  );
 }
 export const pageQuery = graphql`
   query BlogPostByPath($path: String!) {
@@ -26,4 +26,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
