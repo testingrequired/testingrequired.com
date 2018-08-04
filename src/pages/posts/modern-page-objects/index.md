@@ -1,5 +1,5 @@
 ---
-path: /posts/2018-03-23/modern-page-objects
+path: /posts/modern-page-objects
 title: Modern Page Objects
 date: 2018-03-23
 ---
@@ -29,7 +29,7 @@ Our base implementation will start like this:
 ```javascript
 class PageObject {
   constructor(driver) {
-    this.driver = driver
+    this.driver = driver;
   }
 }
 ```
@@ -43,7 +43,7 @@ Elements must be defined as getter/computed properties. This means the defined m
 ```javascript
 class PageObject {
   constructor(driver) {
-    this.driver = driver
+    this.driver = driver;
   }
 
   get someElement() {
@@ -61,12 +61,12 @@ The root element represents the page object's logical boundary in the DOM. All o
 ```javascript
 class PageObject {
   constructor(driver, root) {
-    this.driver = driver
+    this.driver = driver;
 
     Object.defineProperty(this, 'root', {
       enumerable: true,
       get: root,
-    })
+    });
   }
 }
 ```
@@ -78,20 +78,20 @@ We want to ensure that our queries only return child elements of `this.root`:
 ```javascript
 class PageObject {
   constructor(driver, root) {
-    this.driver = driver
+    this.driver = driver;
 
     Object.defineProperty(this, 'root', {
       enumerable: true,
       get: root,
-    })
+    });
   }
 
   element(selector) {
-    return this.root.element(selector)
+    return this.root.element(selector);
   }
 
   elements(selector) {
-    return this.root.elements(selector)
+    return this.root.elements(selector);
   }
 }
 ```
@@ -105,35 +105,35 @@ Lets define a few page objects to represent our components.
 ```javascript
 class LoginForm extends PageObject {
   get username() {
-    return this.element('#username')
+    return this.element('#username');
   }
 
   get password() {
-    return this.element('#password')
+    return this.element('#password');
   }
 
   get submitButton() {
-    return this.element('input[type=submit]')
+    return this.element('input[type=submit]');
   }
 }
 
 class LoginModal extends PageObject {
   get loginForm() {
-    return new LoginForm(this.driver, () => this.element('.loginForm'))
+    return new LoginForm(this.driver, () => this.element('.loginForm'));
   }
 }
 
 class FrontPage extends PageObject {
   get loginModal() {
-    return new LoginModal(this.driver, () => this.element('.modal'))
+    return new LoginModal(this.driver, () => this.element('.modal'));
   }
 
   get loginLink() {
-    return this.element('a#login')
+    return this.element('a#login');
   }
 
   get loginForm() {
-    return new LoginForm(this.driver, () => this.element('.loginForm'))
+    return new LoginForm(this.driver, () => this.element('.loginForm'));
   }
 }
 ```
@@ -141,14 +141,14 @@ class FrontPage extends PageObject {
 This allows our automation to reuse `LoginForm` for both of test scenarios:
 
 ```javascript
-const frontpage = new FrontPage(driver, () => driver.element('body#frontpage'))
+const frontpage = new FrontPage(driver, () => driver.element('body#frontpage'));
 
 // From the frontpage directly
-frontpage.loginForm
+frontpage.loginForm;
 
 // From the frontpage modal
-frontpage.loginLink.click()
-frontpage.loginModal.loginForm
+frontpage.loginLink.click();
+frontpage.loginModal.loginForm;
 ```
 
 ## Advanced
@@ -158,41 +158,41 @@ This approach is flexible but verbose. Plus we are mixing element and page objec
 ```javascript
 class PageObject {
   constructor(driver, root) {
-    this.driver = driver
+    this.driver = driver;
 
     Object.defineProperty(this, 'root', {
       enumerable: true,
       get: root,
-    })
+    });
 
     return new Proxy(this, {
       get: function(pageObject, prop) {
         if (prop in pageObject) {
-          return pageObject[prop]
+          return pageObject[prop];
         }
 
         if (prop in this.root) {
-          return this.root[prop]
+          return this.root[prop];
         }
 
         throw new Error(
           `Property ${prop} not defined on PageObject or root element`
-        )
+        );
       },
-    })
+    });
   }
 
   element(selector, PageObjectClass = PageObject) {
-    return new PageObjectClass(this.driver, () => this.root.element(selector))
+    return new PageObjectClass(this.driver, () => this.root.element(selector));
   }
 
   elements(selector, PageObjectClass = PageObject) {
-    const elements = this.root.elements(selector)
+    const elements = this.root.elements(selector);
     return elements.reduce(
       (pageObjects, element, i) =>
         new PageObjectClass(this.driver, () => elements[i]),
       []
-    )
+    );
   }
 }
 ```
@@ -202,35 +202,35 @@ Our component page objects now look like this:
 ```javascript
 class LoginForm extends PageObject {
   get username() {
-    return this.element('#username')
+    return this.element('#username');
   }
 
   get password() {
-    return this.element('#password')
+    return this.element('#password');
   }
 
   get submitButton() {
-    return this.element('input[type=submit]')
+    return this.element('input[type=submit]');
   }
 }
 
 class LoginModal extends PageObject {
   get loginForm() {
-    return this.element('.loginForm', LoginForm)
+    return this.element('.loginForm', LoginForm);
   }
 }
 
 class FrontPage extends PageObject {
   get loginModal() {
-    return this.element('.modal', LoginModal)
+    return this.element('.modal', LoginModal);
   }
 
   get loginLink() {
-    return this.element('a#login')
+    return this.element('a#login');
   }
 
   get loginForm() {
-    return this.element('.loginForm', LoginForm)
+    return this.element('.loginForm', LoginForm);
   }
 }
 ```
@@ -240,49 +240,49 @@ If you add `$` & `$$` alias methods for `element` & `elements` respectively:
 ```javascript
 class PageObject {
   constructor(driver, root) {
-    this.driver = driver
+    this.driver = driver;
 
     Object.defineProperty(this, 'root', {
       enumerable: true,
       get: root,
-    })
+    });
 
     return new Proxy(this, {
       get: function(pageObject, prop) {
         if (prop in pageObject) {
-          return pageObject[prop]
+          return pageObject[prop];
         }
 
         if (prop in this.root) {
-          return this.root[prop]
+          return this.root[prop];
         }
 
         throw new Error(
           `Property ${prop} not defined on PageObject or root element`
-        )
+        );
       },
-    })
+    });
   }
 
   element(selector, PageObjectClass = PageObject) {
-    return new PageObjectClass(this.driver, () => this.root.element(selector))
+    return new PageObjectClass(this.driver, () => this.root.element(selector));
   }
 
   elements(selector, PageObjectClass = PageObject) {
-    const elements = this.root.elements(selector)
+    const elements = this.root.elements(selector);
     return elements.reduce(
       (pageObjects, element, i) =>
         new PageObjectClass(this.driver, () => elements[i]),
       []
-    )
+    );
   }
 
   $(selector, PageObjectClass) {
-    return this.element(selector, PageObjectClass)
+    return this.element(selector, PageObjectClass);
   }
 
   $$(selector, PageObjectClass) {
-    return this.elements(selector, PageObjectClass)
+    return this.elements(selector, PageObjectClass);
   }
 }
 ```
@@ -292,35 +292,35 @@ It becomes even terser:
 ```javascript
 class LoginForm extends PageObject {
   get username() {
-    return this.$('#username')
+    return this.$('#username');
   }
 
   get password() {
-    return this.$('#password')
+    return this.$('#password');
   }
 
   get submitButton() {
-    return this.$('input[type=submit]')
+    return this.$('input[type=submit]');
   }
 }
 
 class LoginModal extends PageObject {
   get loginForm() {
-    return this.$('.loginForm', LoginForm)
+    return this.$('.loginForm', LoginForm);
   }
 }
 
 class FrontPage extends PageObject {
   get loginModal() {
-    return this.$('.modal', LoginModal)
+    return this.$('.modal', LoginModal);
   }
 
   get loginLink() {
-    return this.$('a#login')
+    return this.$('a#login');
   }
 
   get loginForm() {
-    return this.$('.loginForm', LoginForm)
+    return this.$('.loginForm', LoginForm);
   }
 }
 ```
@@ -338,7 +338,7 @@ Lets start with the Bootstrap form inputs:
 ```javascript
 class BootstrapInput extends PageObject {
   setValue(value) {
-    this.driver.execute(`return arguments[0].value = '${value}'`, this.root)
+    this.driver.execute(`return arguments[0].value = '${value}'`, this.root);
   }
 }
 ```
@@ -348,15 +348,15 @@ Convert our login form page object:
 ```javascript
 class LoginForm extends PageObject {
   get username() {
-    return this.$('#username', BootstrapInput)
+    return this.$('#username', BootstrapInput);
   }
 
   get password() {
-    return this.$('#password', BootstrapInput)
+    return this.$('#password', BootstrapInput);
   }
 
   get submitButton() {
-    return this.$('input[type=submit]')
+    return this.$('input[type=submit]');
   }
 }
 ```
@@ -366,21 +366,21 @@ Or maybe your trying to click on an element you can see but selenium reports it'
 ```javascript
 class ShimClickable extends PageObject {
   click(value) {
-    this.driver.execute(`return arguments[0].click()`, this.root)
+    this.driver.execute(`return arguments[0].click()`, this.root);
   }
 }
 
 class LoginForm extends PageObject {
   get username() {
-    return this.$('#username', BootstrapInput)
+    return this.$('#username', BootstrapInput);
   }
 
   get password() {
-    return this.$('#password', BootstrapInput)
+    return this.$('#password', BootstrapInput);
   }
 
   get submitButton() {
-    return this.$('input[type=submit]', ShimClickable)
+    return this.$('input[type=submit]', ShimClickable);
   }
 }
 ```

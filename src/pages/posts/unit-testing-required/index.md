@@ -1,5 +1,5 @@
 ---
-path: /posts/2018-01-26/unit-testing-required
+path: /posts/unit-testing-required
 title: Unit Testing Required
 date: "2018-01-26"
 ---
