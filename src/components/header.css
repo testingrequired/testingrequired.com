@@ -1,0 +1,15 @@
+.header {
+  margin-bottom: 3em;
+  text-align: center;
+  border-bottom: 1px solid #000;
+  padding: 1em;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.header h1 a {
+  color: #333;
+  text-decoration: none;
+}
