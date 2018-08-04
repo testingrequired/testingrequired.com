@@ -9,7 +9,6 @@ import InlineList from '../components/inline-list';
 import Content from '../components/content';
 
 import './base.css';
-import './index.css';
 
 const Layout = ({ children, data, location }) => (
   <Site>
