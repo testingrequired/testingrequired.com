@@ -4,18 +4,13 @@ import Helmet from 'react-helmet';
 
 import Header from '../components/header';
 import './base.css';
+import './index.css';
 
 const Layout = ({ children, data }) => (
-  <div>
-    <Helmet
-      title={data.site.siteMetadata.title}
-      meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
-      ]}
-    />
+  <div id="main">
+    <Helmet title={data.site.siteMetadata.title} />
     <Header siteTitle={data.site.siteMetadata.title} />
-    <div>{children()}</div>
+    <div id="content">{children()}</div>
   </div>
 );
 
