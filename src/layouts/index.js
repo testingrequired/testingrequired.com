@@ -1,17 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import Link from 'gatsby-link';
 
+import Site from '../components/site';
 import Header from '../components/header';
+import InlineList from '../components/inline-list';
+import Content from '../components/content';
+
 import './base.css';
 import './index.css';
 
 const Layout = ({ children, data }) => (
-  <div id="main">
+  <Site>
     <Helmet title={data.site.siteMetadata.title} />
-    <Header siteTitle={data.site.siteMetadata.title} />
-    <div id="content">{children()}</div>
-  </div>
+
+    <Header>
+      <h1>
+        <Link to="/">{data.site.siteMetadata.title}</Link>
+      </h1>
+
+      <InlineList>
+        <Link to="/blog">Blog</Link>
+        <a href="https://twitter.com/testingrequired">Twitter</a>
+        <a href="https://github.com/testingrequired">Github</a>
+      </InlineList>
+    </Header>
+
+    <Content>{children()}</Content>
+  </Site>
 );
 
 Layout.propTypes = {

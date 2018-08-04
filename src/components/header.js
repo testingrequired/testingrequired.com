@@ -1,15 +1,15 @@
 import React from 'react';
-import Link from 'gatsby-link';
-import './header.css';
-import HeaderLinks from './header-links';
+import styled from 'styled-components';
 
-const Header = ({ siteTitle }) => (
-  <div className="header">
-    <h1>
-      <Link to="/">{siteTitle}</Link>
-    </h1>
-    <HeaderLinks />
-  </div>
-);
+export default styled.div`
+  background: #333;
+  color: #fff;
+  margin-bottom: 3em;
+  text-align: center;
+  padding: 1em;
 
-export default Header;
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+`;
