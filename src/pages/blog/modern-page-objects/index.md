@@ -1,5 +1,5 @@
 ---
-path: /posts/modern-page-objects
+path: /blog/modern-page-objects
 title: Modern Page Objects
 date: 2018-03-23
 ---

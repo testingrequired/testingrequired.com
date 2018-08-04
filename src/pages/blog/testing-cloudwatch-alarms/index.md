@@ -1,5 +1,5 @@
 ---
-path: /posts/testing-cloudwatch-alarms
+path: /blog/testing-cloudwatch-alarms
 title: Testing Cloudwatch Alarms
 date: 2018-07-09
 ---

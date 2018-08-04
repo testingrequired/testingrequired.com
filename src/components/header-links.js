@@ -5,7 +5,7 @@ import './header-links.css';
 const HeaderLinks = props => (
   <ul className="headerLinks">
     <li>
-      <Link to="/posts">Posts</Link>
+      <Link to="/blog">Blog</Link>
     </li>
     <li>
       <a href="https://twitter.com/testingrequired">Twitter</a>

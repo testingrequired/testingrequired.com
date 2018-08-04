@@ -1,5 +1,5 @@
 ---
-path: /posts/unit-testing-required
+path: /blog/unit-testing-required
 title: Unit Testing Required
 date: "2018-01-26"
 ---
