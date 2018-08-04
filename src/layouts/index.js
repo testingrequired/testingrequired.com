@@ -11,11 +11,11 @@ import Content from '../components/content';
 import './base.css';
 import './index.css';
 
-const Layout = ({ children, data }) => (
+const Layout = ({ children, data, location }) => (
   <Site>
     <Helmet title={data.site.siteMetadata.title} />
 
-    <Header>
+    <Header fullscreen={location.pathname === '/'}>
       <h1>
         <Link to="/">{data.site.siteMetadata.title}</Link>
       </h1>
@@ -27,7 +27,7 @@ const Layout = ({ children, data }) => (
       </InlineList>
     </Header>
 
-    <Content>{children()}</Content>
+    {location.pathname === '/' ? null : <Content>{children()}</Content>}
   </Site>
 );
 
