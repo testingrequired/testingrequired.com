@@ -13,7 +13,7 @@ const InlineListWrapper = styled.ul`
 
 const InlineList = ({ children }) => (
   <InlineListWrapper>
-    {children.map(child => <li>{child}</li>)}
+    {children.map((child, index) => <li key={index}>{child}</li>)}
   </InlineListWrapper>
 );
 
