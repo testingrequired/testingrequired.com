@@ -114,7 +114,7 @@ This is where page objects and web elements start to blend. From an API perspect
 
 ### Return page objects instead of elements
 
-You can overwrite the find element/s methods to accept a page object class and wrap the results in that class.
+You can override the find element/s methods to accept a page object class and wrap the results in that class.
 
 ```javascript
 class PageObject {
