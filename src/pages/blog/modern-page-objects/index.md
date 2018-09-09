@@ -234,7 +234,7 @@ const app = new YourApp(webdriverInstance);
 app.frontpage.loginForm.loginWith('username', 'password');
 ```
 
-### Solving Edge Cases
+## Solving Edge Cases
 
 A previous project I had worked on was writing automation for a vendor web app to automate data entry and validate the app's behavior. I spent a few weeks walking through a manual testing plan, mapping the DOM to page objects while converting them to automated tests. A month after completing this test suite the vendor released a redesign implemented in Bootstrap.
 
