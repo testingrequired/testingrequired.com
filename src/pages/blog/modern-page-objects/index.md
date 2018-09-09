@@ -4,27 +4,27 @@ title: Modern Page Objects
 date: 2018-03-23
 ---
 
-Page objects are a pattern used in automated testing and scripting. They abstract and decouple interacting with frontend components (inputs, buttons, images,text, links) from the automation (e.g. test, script) itself.
+The page object model is a pattern for abstracting defining and interacting with components in a GUI.
 
-There are many definitions of what the pattern is there is very little out there regarding actual implementation and best practices. This results in adhoc implementations by project or even by develper.
+1. Find the logical boundaries of a component: A form
+1. Identify elements within the component: An input and a button
+1. Interact with this elements: Populate the input and click the button
 
-This inconsistency makes an automation suite difficult to understand and increases barrier of entry for new maintainers. Increasing the chance of flakiness or a testing codebase that becomes a nightmare to keep up to date.
+This dramatically decreases complexity of automation scripts and lowers risk of test breakage "brittleness".
 
-We are going to implement a base implementation for your page objects and how to use them in a modern component based web application. This can be implemented in any language but this will be in javascript.
+There are many ways to implement this pattern and not a lot of documented best practices around implementing them. Its even been my experience that within monolytic selenium test suites you'll find implementation varies from page object to page object. This contributes to that test bitterness that are common in these type of test suites. It also increases barrier to entry for new developers on a team to contribute to those suites. So they mostly go untouched and eventually forgotten.
 
-## History
+Web apps have also changed a lot from the beginning of Selenium's life. Moving from static document based server rendeded jQuery enchanced pages to dynamically code split client side rendered componented based apps ala React, Vue, Angular. The shift from modelling pages to reusable components. This is even less documented.
 
-The term "page object" was coined in [2004 by Martin Fowler when blogging](https://martinfowler.com/eaaDev/WindowDriver.html) about Windows GUI testing using WindowsDriver. This pattern would later be adopted by the [Selenium community](https://github.com/SeleniumHQ/selenium/wiki/PageObjects).
+Of course there are also edge cases in all pages/app where writing a clean page object is difficult. The page/app was never written with selenium testing in mind so you have to be created with how you select and interact with elements. Sometimes there are no clear boundaries.
 
-## Component Based Apps
+This post will cover page objects in component based apps, writing a base implementation, discuss best practices and advanced tips.
 
-From a selenium perspective the term "page object" was in the context of document based template rendered pages. There were common elements (e.g. headers, footers) but most of the elements were unique to each page.
+## Base Implementation
 
-Modern web applications are component based with self containment and re-usability in mind. This maps perfectly to the page object pattern. This allows a single page object to be used anywhere the component is used. This also means returning page objects as properties along with elements.
+It's important to have a solid base page object to extend from. This is going to contain all the complex logic as well as provide a common API to implement against.
 
-## Implementation
-
-Our base implementation will start like this:
+### Webdriver
 
 ```javascript
 class PageObject {
@@ -34,11 +34,9 @@ class PageObject {
 }
 ```
 
-If you've written page objects before this will look familiar. The webdriver instance is passed in so that elements can be queried for.
+The `driver` is a reference to the current webdriver instance. It provides methods to interact with the connected browser (select and interact with elements, execute javascript, etc...). This has to be provided at as page object initialization so that it's possible to have multiple webdriver instances at once.
 
-### Defining Elements
-
-Elements must be defined as getter/computed properties. This means the defined method is called everytime the element is referenced.
+### Defining elements
 
 ```javascript
 class PageObject {
@@ -47,33 +45,16 @@ class PageObject {
   }
 
   get someElement() {
-    //...
+    return this.driver.findElement('#someElement');
   }
 }
 ```
 
-Element references can become [stale](https://www.seleniumhq.org/exceptions/stale_element_reference.jsp) if the element is removed from the [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction) or the page reloads. It's always safer to requery every time.
+Define a getter function that returns the element. Getters ensure that element references are always fresh. Element references can become [stale](https://www.seleniumhq.org/exceptions/stale_element_reference.jsp) if the element is removed from the [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction) or the page reloads so it's always safer to requery every time.
 
-### Root Element
+### Root element
 
-The root element represents the page object's logical boundary in the DOM. All other elements will be children of this element. We are using `Object.defineProperty` to set the argument `root` as the getter property for `this.root`.
-
-```javascript
-class PageObject {
-  constructor(driver, root) {
-    this.driver = driver;
-
-    Object.defineProperty(this, 'root', {
-      enumerable: true,
-      get: root,
-    });
-  }
-}
-```
-
-### Querying for elements
-
-We want to ensure that our queries only return child elements of `this.root`:
+The root element represents the page object's logical boundary in the DOM. All other elements will be children of this element. We are using `Object.defineProperty` to set the getter `root` so that we can use `this.root` instead of `this.root()`:
 
 ```javascript
 class PageObject {
@@ -86,74 +67,54 @@ class PageObject {
     });
   }
 
-  element(selector) {
-    return this.root.element(selector);
-  }
-
-  elements(selector) {
-    return this.root.elements(selector);
+  get someElement() {
+    return this.root.findElement('#someElement');
   }
 }
 ```
 
-## Example
+### Proxy calls to root
 
-We are going to use our `PageObject` implementation to write a page object for a login form component in our app. This login form component is used on the front page when you aren't logged in and also appears in a modal when the login link is clicked. Since they are the same component we should be able to write one page object for both instances.
-
-Lets define a few page objects to represent our components.
+This is a more advanced technique but you can proxy and undefined property/method calls on your page object to the root element. This makes for a terser syntax when selecting elements:
 
 ```javascript
-class LoginForm extends PageObject {
-  get username() {
-    return this.element('#username');
+class PageObject {
+  constructor(driver, root) {
+    this.driver = driver;
+
+    Object.defineProperty(this, 'root', {
+      enumerable: true,
+      get: root,
+    });
+
+    return new Proxy(this, {
+      get: function(pageObject, prop) {
+        if (prop in pageObject) {
+          return pageObject[prop];
+        }
+
+        if (prop in this.root) {
+          return this.root[prop];
+        }
+
+        throw new Error(
+          `Property ${prop} not defined on PageObject or root element`
+        );
+      },
+    });
   }
 
-  get password() {
-    return this.element('#password');
-  }
-
-  get submitButton() {
-    return this.element('input[type=submit]');
-  }
-}
-
-class LoginModal extends PageObject {
-  get loginForm() {
-    return new LoginForm(this.driver, () => this.element('.loginForm'));
-  }
-}
-
-class FrontPage extends PageObject {
-  get loginModal() {
-    return new LoginModal(this.driver, () => this.element('.modal'));
-  }
-
-  get loginLink() {
-    return this.element('a#login');
-  }
-
-  get loginForm() {
-    return new LoginForm(this.driver, () => this.element('.loginForm'));
+  get someElement() {
+    return this.findElement('#someElement');
   }
 }
 ```
 
-This allows our automation to reuse `LoginForm` for both of test scenarios:
+This is where page objects and web elements start to blend. From an API perspective the page object and root element are one in the same.
 
-```javascript
-const frontpage = new FrontPage(driver, () => driver.element('body#frontpage'));
+### Return page objects instead of elements
 
-// From the frontpage directly
-frontpage.loginForm;
-
-// From the frontpage modal
-frontpage.loginLink.click();
-frontpage.loginModal.loginForm;
-```
-
-## Advanced
-
-This approach is flexible but verbose. Plus we are mixing element and page object properties. If we modify `element` & `elements` to accept a page object class and proxy undefined method calls to `this.root` then we will be working entirely with page objects. This is not only a much more terse syntax but enables powerful patterns. If an element requires special logic then a page object is perfect to implement this. This also allows you to override element methods like `click` or `setValue` for edge cases.
+You can overwrite the find element/s methods to accept a page object class and wrap the results in that class.
 
 ```javascript
 class PageObject {
@@ -197,7 +158,9 @@ class PageObject {
 }
 ```
 
-Our component page objects now look like this:
+A powerful pattern for terse but flexible page objects. This also aligns well since now we can map components from those component based apps direct to page objects and both implementations are reusable.
+
+## Example
 
 ```javascript
 class LoginForm extends PageObject {
@@ -231,96 +194,6 @@ class FrontPage extends PageObject {
 
   get loginForm() {
     return this.element('.loginForm', LoginForm);
-  }
-}
-```
-
-If you add `$` & `$$` alias methods for `element` & `elements` respectively:
-
-```javascript
-class PageObject {
-  constructor(driver, root) {
-    this.driver = driver;
-
-    Object.defineProperty(this, 'root', {
-      enumerable: true,
-      get: root,
-    });
-
-    return new Proxy(this, {
-      get: function(pageObject, prop) {
-        if (prop in pageObject) {
-          return pageObject[prop];
-        }
-
-        if (prop in this.root) {
-          return this.root[prop];
-        }
-
-        throw new Error(
-          `Property ${prop} not defined on PageObject or root element`
-        );
-      },
-    });
-  }
-
-  element(selector, PageObjectClass = PageObject) {
-    return new PageObjectClass(this.driver, () => this.root.element(selector));
-  }
-
-  elements(selector, PageObjectClass = PageObject) {
-    const elements = this.root.elements(selector);
-    return elements.reduce(
-      (pageObjects, element, i) =>
-        new PageObjectClass(this.driver, () => elements[i]),
-      []
-    );
-  }
-
-  $(selector, PageObjectClass) {
-    return this.element(selector, PageObjectClass);
-  }
-
-  $$(selector, PageObjectClass) {
-    return this.elements(selector, PageObjectClass);
-  }
-}
-```
-
-It becomes even terser:
-
-```javascript
-class LoginForm extends PageObject {
-  get username() {
-    return this.$('#username');
-  }
-
-  get password() {
-    return this.$('#password');
-  }
-
-  get submitButton() {
-    return this.$('input[type=submit]');
-  }
-}
-
-class LoginModal extends PageObject {
-  get loginForm() {
-    return this.$('.loginForm', LoginForm);
-  }
-}
-
-class FrontPage extends PageObject {
-  get loginModal() {
-    return this.$('.modal', LoginModal);
-  }
-
-  get loginLink() {
-    return this.$('a#login');
-  }
-
-  get loginForm() {
-    return this.$('.loginForm', LoginForm);
   }
 }
 ```
