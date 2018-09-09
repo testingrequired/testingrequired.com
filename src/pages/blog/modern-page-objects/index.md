@@ -175,6 +175,12 @@ class LoginForm extends PageObject {
   get submitButton() {
     return this.element('input[type=submit]');
   }
+
+  loginWith(username, password) {
+    this.username.setValue('username');
+    this.password.setValue('password');
+    this.submitButton.click();
+  }
 }
 
 class LoginModal extends PageObject {
@@ -196,6 +202,36 @@ class FrontPage extends PageObject {
     return this.element('.loginForm', LoginForm);
   }
 }
+```
+
+## Initialzing
+
+The page objects have to be initialized with a webdriver instance and a function returning root web element. They also need to be intialized some common place to be imported by a test/script.
+
+```javascript
+const frontpage = new FrontPage(driver, () => driver.findElement('body'));
+
+module.exports = { frontpage };
+```
+
+## App Class
+
+This approach quickly becomes cumbersome as the test suite grows. One pattern for solving that is to implement an app class. It contains page objects representing the different views/pages in the wep app.
+
+```javascript
+class YourApp {
+  constructor(driver) {
+    this.driver = driver;
+  }
+
+  get frontpage() {
+    return new FrontPage(this.driver, () => this.driver.findElement('body'));
+  }
+}
+
+const app = new YourApp(webdriverInstance);
+
+app.frontpage.loginForm.loginWith('username', 'password');
 ```
 
 ### Solving Edge Cases
@@ -231,6 +267,12 @@ class LoginForm extends PageObject {
   get submitButton() {
     return this.$('input[type=submit]');
   }
+
+  loginWith(username, password) {
+    this.username.setValue('username');
+    this.password.setValue('password');
+    this.submitButton.click();
+  }
 }
 ```
 
@@ -254,6 +296,12 @@ class LoginForm extends PageObject {
 
   get submitButton() {
     return this.$('input[type=submit]', ShimClickable);
+  }
+
+  loginWith(username, password) {
+    this.username.setValue('username');
+    this.password.setValue('password');
+    this.submitButton.click();
   }
 }
 ```
