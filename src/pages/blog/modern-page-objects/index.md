@@ -45,7 +45,7 @@ class PageObject {
   }
 
   get someElement() {
-    return this.driver.findElement('#someElement');
+    return this.driver.element('#someElement');
   }
 }
 ```
@@ -68,7 +68,7 @@ class PageObject {
   }
 
   get someElement() {
-    return this.root.findElement('#someElement');
+    return this.root.element('#someElement');
   }
 }
 ```
@@ -105,7 +105,7 @@ class PageObject {
   }
 
   get someElement() {
-    return this.findElement('#someElement');
+    return this.element('#someElement');
   }
 }
 ```
@@ -209,7 +209,7 @@ class FrontPage extends PageObject {
 The page objects have to be initialized with a webdriver instance and a function returning root web element. They also need to be intialized some common place to be imported by a test/script.
 
 ```javascript
-const frontpage = new FrontPage(driver, () => driver.findElement('body'));
+const frontpage = new FrontPage(driver, () => driver.element('body'));
 
 module.exports = { frontpage };
 ```
@@ -225,7 +225,7 @@ class YourApp {
   }
 
   get frontpage() {
-    return new FrontPage(this.driver, () => this.driver.findElement('body'));
+    return new FrontPage(this.driver, () => this.driver.element('body'));
   }
 }
 
@@ -257,15 +257,15 @@ Convert our login form page object:
 ```javascript
 class LoginForm extends PageObject {
   get username() {
-    return this.$('#username', BootstrapInput);
+    return this.element('#username', BootstrapInput);
   }
 
   get password() {
-    return this.$('#password', BootstrapInput);
+    return this.element('#password', BootstrapInput);
   }
 
   get submitButton() {
-    return this.$('input[type=submit]');
+    return this.element('input[type=submit]');
   }
 
   loginWith(username, password) {
@@ -287,15 +287,15 @@ class ShimClickable extends PageObject {
 
 class LoginForm extends PageObject {
   get username() {
-    return this.$('#username', BootstrapInput);
+    return this.element('#username', BootstrapInput);
   }
 
   get password() {
-    return this.$('#password', BootstrapInput);
+    return this.element('#password', BootstrapInput);
   }
 
   get submitButton() {
-    return this.$('input[type=submit]', ShimClickable);
+    return this.element('input[type=submit]', ShimClickable);
   }
 
   loginWith(username, password) {
