@@ -1,5 +1,11 @@
 import React from 'react';
+import Layout from '../layouts';
 
 export default function Index() {
-  return <div />;
+  return (
+    <Layout>
+      {' '}
+      <div />
+    </Layout>
+  );
 }
