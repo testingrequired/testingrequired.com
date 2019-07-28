@@ -1,10 +1,11 @@
 import React from 'react';
 import Link from 'gatsby-link';
+import Layout from '../layouts';
 
 export default function Index({ data }) {
   const { edges: posts } = data.allMarkdownRemark;
   return (
-    <div>
+    <Layout>
       {posts
         .filter(post => post.node.frontmatter.title.length > 0)
         .map(({ node: post }) => {
@@ -19,7 +20,7 @@ export default function Index({ data }) {
             </div>
           );
         })}
-    </div>
+    </Layout>
   );
 }
 export const pageQuery = graphql`
