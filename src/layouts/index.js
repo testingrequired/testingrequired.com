@@ -11,6 +11,7 @@ import Content from '../components/content';
 
 import './base.css';
 import NavMenu from '../components/nav-menu';
+import Icon from '../components/icon';
 
 export default ({ children }) => (
   <StaticQuery
@@ -31,7 +32,9 @@ export default ({ children }) => (
 
             <Header fullscreen={location.pathname === '/'}>
               <h1>
-                <Link to="/">{site.siteMetadata.title}</Link>
+                <Link to="/">
+                  <Icon /> {site.siteMetadata.title}
+                </Link>
               </h1>
 
               <NavMenu>
