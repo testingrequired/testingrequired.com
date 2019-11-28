@@ -9,7 +9,9 @@ export default function Projects() {
 
       <section>
         <h3>
-          <OutboundLink href="https://exampletest.app">Example Test App</OutboundLink>
+          <OutboundLink href="https://exampletest.app">
+            Example Test App
+          </OutboundLink>
         </h3>
 
         <p>
@@ -31,6 +33,27 @@ export default function Projects() {
           <li>
             <OutboundLink href="https://github.com/testingrequired/exampletest.app">
               https://github.com/testingrequired/exampletest.app
+            </OutboundLink>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>
+          <OutboundLink href="https://testingrequired.github.io/selector-display/">
+            Selector Display
+          </OutboundLink>
+        </h3>
+
+        <p>
+          Built for testing how HTML and CSS selectors work together. Visualizes
+          selector results against a blob of HTML.
+        </p>
+
+        <ul>
+          <li>
+            <OutboundLink href="https://testingrequired.github.io/selector-display/">
+              https://testingrequired.github.io/selector-display/
             </OutboundLink>
           </li>
         </ul>
