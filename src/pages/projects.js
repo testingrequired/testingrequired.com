@@ -40,6 +40,30 @@ export default function Projects() {
 
       <section>
         <h3>
+          <OutboundLink href="https://github.com/testingrequired/exampletest.app-tests">
+            Example Test App Tests
+          </OutboundLink>
+        </h3>
+
+        <p>
+          An end to end test suite using webdriver.io targeting{' '}
+          <OutboundLink href="https://exampletest.app">
+            https://exampletest.app
+          </OutboundLink>
+          .
+        </p>
+
+        <ul>
+          <li>
+            <OutboundLink href="https://github.com/testingrequired/exampletest.app-tests">
+              https://github.com/testingrequired/exampletest.app-tests
+            </OutboundLink>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>
           <OutboundLink href="https://testingrequired.github.io/selector-display/">
             Selector Display
           </OutboundLink>
