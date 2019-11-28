@@ -1,19 +1,17 @@
 const path = require('path');
 
 exports.createPages = async ({ actions, graphql }) => {
-  await createBlogPages({ actions, graphql });
+  const postTemplate = path.resolve(`src/templates/post.js`);
+
+  await makePostPages('**/blog/*.md', actions.createPage, postTemplate);
 };
 
-async function createBlogPages({ actions, graphql }) {
-  const { createPage } = actions;
-
-  const blogPostTemplate = path.resolve(`src/templates/post.js`);
-
+async function makePostPages(glob, createPage, template) {
   const result = await graphql(`
     {
       allMarkdownRemark(
         sort: { order: DESC, fields: [frontmatter___date] }
-        filter: { fileAbsolutePath: { glob: "**/blog/*.md" } }
+        filter: { fileAbsolutePath: { glob: "${glob}" } }
       ) {
         edges {
           node {
@@ -37,7 +35,7 @@ async function createBlogPages({ actions, graphql }) {
 
     createPage({
       path: node.frontmatter.path,
-      component: blogPostTemplate,
+      component: template,
       context: {}, // additional data can be passed via context
     });
   });
