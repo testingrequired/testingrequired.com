@@ -3,10 +3,15 @@ const path = require('path');
 exports.createPages = async ({ actions, graphql }) => {
   const postTemplate = path.resolve(`src/templates/post.js`);
 
-  await makePostPages('**/blog/*.md', actions.createPage, postTemplate);
+  await makePostPages(
+    graphql,
+    '**/blog/*.md',
+    actions.createPage,
+    postTemplate
+  );
 };
 
-async function makePostPages(glob, createPage, template) {
+async function makePostPages(graphql, glob, createPage, template) {
   const result = await graphql(`
     {
       allMarkdownRemark(
