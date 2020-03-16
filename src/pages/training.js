@@ -10,8 +10,8 @@ export default function Training() {
         <h3>Contact</h3>
 
         <p>
-          <a href="mailto:training@testingrequired.com">
-            training@testingrequired.com
+          <a href="mailto:kylee@testingrequired.com">
+            kylee@testingrequired.com
           </a>
         </p>
       </section>
