@@ -6,7 +6,7 @@ date: '2020-02-25'
 
 For the purpose of this post imagine that you work at a company at which there are strict rules around the use of third party software. While you can use open source the red tape required would stifle a new project that's high priority for the company. This means you'll largely be implementing everything yourself.
 
-## Phase 1
+## Assert
 
 Where would you even start? Well the core of a test is an assertion of a value state: true or false.
 
