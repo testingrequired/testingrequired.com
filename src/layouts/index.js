@@ -28,7 +28,10 @@ export default ({ children }) => (
       <Location>
         {({ location }) => (
           <Site>
-            <Helmet title={site.siteMetadata.title} />
+            <Helmet>
+              <title>{site.siteMetadata.title}</title>
+              <link rel="me" href="https://mastodon.social/@testingrequired" />
+            </Helmet>
 
             <Header fullscreen={location.pathname === '/'}>
               <h1>
