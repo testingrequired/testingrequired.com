@@ -44,11 +44,14 @@ export default ({ children }) => (
                 <Link to="/blog">Blog</Link>
                 <Link to="/projects">Projects</Link>
                 <Link to="/training">Training</Link>
-                <OutboundLink href="https://twitter.com/testingrequired">
-                  Twitter
+                <OutboundLink href="https://mastodon.social/@testingrequired">
+                  Mastodon
                 </OutboundLink>
                 <OutboundLink href="https://github.com/testingrequired">
                   Github
+                </OutboundLink>
+                <OutboundLink href="https://twitter.com/testingrequired">
+                  Twitter
                 </OutboundLink>
               </NavMenu>
             </Header>

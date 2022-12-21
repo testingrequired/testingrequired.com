@@ -10,15 +10,11 @@ export default function Training() {
         <h3>Contact</h3>
 
         <p>
-          <a href="mailto:kylee@testingrequired.com">
-            kylee@testingrequired.com
-          </a>
+          ✉️ kyleetilley[at]gmail.com
         </p>
       </section>
 
       <section>
-        <h3>Services</h3>
-
         <ul>
           <li>On Site or Remote</li>
           <li>Talks</li>
@@ -33,9 +29,8 @@ export default function Training() {
 
         <ul>
           <li>Entry Level</li>
-          <li>Manual Testers</li>
-          <li>Test Automators</li>
           <li>Developers</li>
+          <li>Testers</li>
           <li>Teams</li>
         </ul>
       </section>
