@@ -47,11 +47,11 @@ export default function Talks() {
 
       <section>
         <ul>
-          <li>On Site or Remote</li>
           <li>Talks</li>
           <li>Workshops</li>
-          <li>One-on-one</li>
+          <li>Mobbing, pairing, one-on-one</li>
           <li>Customized</li>
+          <li>💻💥Live coding</li>
         </ul>
       </section>
 
@@ -64,8 +64,10 @@ export default function Talks() {
           <li>Eliminating story pointing by properly breaking down stories</li>
           <li>How to think about error handling how it affect the architecture of your code</li>
           <li>How to identify risk, assess, monitor vs mitigate</li>
-          <li>And many more development, testing and delivery topics</li>
+          <li>Working versus correct</li>
         </ul>
+
+        As well as several other topics relating to development, testing, delivery
       </section>
 
       <section>
