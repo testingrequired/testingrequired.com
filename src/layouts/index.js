@@ -44,6 +44,7 @@ export default ({ children }) => (
                 <Link to="/blog">Blog</Link>
                 <Link to="/talks">Talks</Link>
                 <Link to="/projects">Projects</Link>
+                <Link to="/about">About</Link>
                 <OutboundLink href="https://mastodon.social/@testingrequired">
                   Mastodon
                 </OutboundLink>
@@ -55,6 +56,9 @@ export default ({ children }) => (
                 </OutboundLink>
                 <OutboundLink href="https://twitter.com/testingrequired">
                   Twitter
+                </OutboundLink>
+                <OutboundLink href="https://www.youtube.com/@testingrequired">
+                  Youtube
                 </OutboundLink>
               </NavMenu>
             </Header>
