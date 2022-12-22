@@ -5,7 +5,7 @@ import { OutboundLink } from 'gatsby-plugin-google-analytics';
 export default function Talks() {
   return (
     <Layout>
-      <h2>Talks</h2>
+      <h2 style={{ fontSize: "2em" }}>Talks</h2>
 
       <ul>
         <li>
