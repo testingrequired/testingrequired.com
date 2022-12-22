@@ -50,6 +50,9 @@ export default ({ children }) => (
                 <OutboundLink href="https://github.com/testingrequired">
                   Github
                 </OutboundLink>
+                <OutboundLink href="https://www.linkedin.com/in/kyleetilley/">
+                  LinkedIn
+                </OutboundLink>
                 <OutboundLink href="https://twitter.com/testingrequired">
                   Twitter
                 </OutboundLink>
