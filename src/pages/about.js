@@ -7,8 +7,8 @@ import { OutboundLink } from 'gatsby-plugin-google-analytics';
 export default function About() {
     return (
         <Layout>
-            <h2 style={{ fontSize: "2.5em" }}>About Me</h2>
             <img src={banner} />
+            <h2 style={{ fontSize: "2em" }}>About Me</h2>
 
             <section>
                 <div style={{ display: "flex", gap: "1em", alignItems: "flex-start" }}>
