@@ -30,6 +30,7 @@ export default ({ children }) => (
             <Helmet>
               <title>{site.siteMetadata.title}</title>
               <link rel="me" href="https://mastodon.social/@testingrequired" />
+              <meta name="viewport" content="width=device-width" />
             </Helmet>
 
             <Header fullscreen={location.pathname === '/'}>
