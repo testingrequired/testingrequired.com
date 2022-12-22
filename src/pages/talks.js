@@ -26,7 +26,7 @@ export default function Talks() {
         <li>
           <OutboundLink href="https://docs.google.com/presentation/d/1ntsjTF2R8SEI66FJFBjAaheN-6mfBsP_ZqgBsGM78HM/edit?usp=sharing">
             {`Reading Pull Requests: Features, Fixes & Other Diviniations`}
-          </OutboundLink> 2019 (slides only)
+          </OutboundLink> 2019 (slides only) <OutboundLink href="https://github.com/testingrequired/talk-reading-pull-requests">Repo</OutboundLink>
         </li>
         <li>
           <OutboundLink href="https://docs.google.com/presentation/d/1FgutMD7VdJMNMcz0dp9gw5_9CRPLnoaYQXHtJEDJyxQ/edit?usp=sharing">
