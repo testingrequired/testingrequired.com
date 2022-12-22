@@ -42,8 +42,8 @@ export default ({ children }) => (
 
               <NavMenu>
                 <Link to="/blog">Blog</Link>
+                <Link to="/talks">Talks</Link>
                 <Link to="/projects">Projects</Link>
-                <Link to="/training">Training</Link>
                 <OutboundLink href="https://mastodon.social/@testingrequired">
                   Mastodon
                 </OutboundLink>
