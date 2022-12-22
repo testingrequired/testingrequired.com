@@ -13,7 +13,7 @@ export default function About() {
             <section>
                 <div style={{ display: "flex", gap: "1em", alignItems: "flex-start" }}>
                     <div style={{ padding: "1em", flexGrow: "1", width: "20em" }}>
-                        <img src={me} style={{ borderRadius: "50%", width: "7em", height: "7em" }} alt="" />
+                        <img src={me} style={{ borderRadius: "50%", minWidth: "7em", width: "7em", height: "7em" }} alt="" />
 
                         <div>
                             <h3>Links</h3>
