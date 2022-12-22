@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '../layouts';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 
 export default function Talks() {
   return (
