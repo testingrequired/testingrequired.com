@@ -38,14 +38,6 @@ export default function Talks() {
       <h2>Want To Hear Me Speak?</h2>
 
       <section>
-        <h3>Contact</h3>
-
-        <p>
-          ✉️ kyleetilley[at]gmail.com
-        </p>
-      </section>
-
-      <section>
         <ul>
           <li>Talks</li>
           <li>Workshops</li>
@@ -63,11 +55,12 @@ export default function Talks() {
           <li>Understanding the different between building something correctly vs building the right thing</li>
           <li>Eliminating story pointing by properly breaking down stories</li>
           <li>How to think about error handling how it affect the architecture of your code</li>
-          <li>How to identify risk, assess, monitor vs mitigate</li>
-          <li>Working versus correct</li>
+          <li>How to identify risk, assess, monitor vs mitigate and why everything boils down to risk</li>
+          <li>Analyzing the connection between testability (or lack of) and quality code architecture</li>
+          <li>A working solution versus correct</li>
         </ul>
 
-        As well as several other topics relating to development, testing, delivery
+        <p>As well as several other topics relating to development, testing, delivery.</p>
       </section>
 
       <section>
@@ -79,6 +72,14 @@ export default function Talks() {
           <li>Testers</li>
           <li>Teams</li>
         </ul>
+      </section>
+
+      <section>
+        <h3>Contact</h3>
+
+        <p>
+          ✉️ kyleetilley[at]gmail.com
+        </p>
       </section>
     </Layout>
   );
