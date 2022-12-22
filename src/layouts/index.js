@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import Link from 'gatsby-link';
 import { StaticQuery, graphql } from 'gatsby';
 import { Location } from '@reach/router';
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
 
 import Site from '../components/site';
 import Header from '../components/header';
@@ -36,7 +35,7 @@ export default ({ children }) => (
             <Header fullscreen={location.pathname === '/'}>
               <h1>
                 <Link to="/">
-                  <Icon /> {site.siteMetadata.title}
+                  <span style={{ whiteSpace: "nowrap" }}><Icon /> {site.siteMetadata.title}</span>
                 </Link>
               </h1>
 
@@ -45,21 +44,6 @@ export default ({ children }) => (
                 <Link to="/talks">Talks</Link>
                 <Link to="/projects">Projects</Link>
                 <Link to="/about">About</Link>
-                <OutboundLink href="https://mastodon.social/@testingrequired">
-                  Mastodon
-                </OutboundLink>
-                <OutboundLink href="https://github.com/testingrequired">
-                  Github
-                </OutboundLink>
-                <OutboundLink href="https://www.linkedin.com/in/kyleetilley/">
-                  LinkedIn
-                </OutboundLink>
-                <OutboundLink href="https://twitter.com/testingrequired">
-                  Twitter
-                </OutboundLink>
-                <OutboundLink href="https://www.youtube.com/@testingrequired">
-                  Youtube
-                </OutboundLink>
               </NavMenu>
             </Header>
 
