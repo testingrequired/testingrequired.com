@@ -9,7 +9,7 @@ export default function Talks() {
 
       <ul>
         <li>
-          <OutboundLink href="https://www.ministryoftesting.com/dojo/series/test-bash-2022/lessons/transcending-the-tools">
+          <OutboundLink href="https://www.ministryoftesting.com/testbash-talks/11967ffe?s_id=14784899">
             {`Transcending The Tools`}
           </OutboundLink> @ Test.Bash() 2022 <OutboundLink href="https://docs.google.com/presentation/d/1Po5RHzyJ--s7kDGY2jI_KxyqQJnNrvbREiF-35rCnvY/edit?usp=sharing">(slides)</OutboundLink>
         </li>
