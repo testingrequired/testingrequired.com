@@ -7,7 +7,7 @@ import { OutboundLink } from 'gatsby-plugin-google-analytics';
 export default function About() {
     return (
         <Layout>
-            <img src={banner} />
+            <img src={banner} alt="Me standing on stage giving a talk" />
             <h2 style={{ fontSize: "2em" }}>About Me</h2>
 
             <section>

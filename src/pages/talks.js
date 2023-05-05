@@ -43,7 +43,7 @@ export default function Talks() {
           <li>Workshops</li>
           <li>Mobbing, pairing, one-on-one</li>
           <li>Customized</li>
-          <li>💻💥Live coding</li>
+          <li><span role='img' aria-label='Laptop'>💻</span><span role='img' aria-label='Explosion'>💥</span> Live coding</li>
         </ul>
       </section>
 
@@ -78,7 +78,7 @@ export default function Talks() {
         <h3>Contact</h3>
 
         <p>
-          ✉️ kyleetilley[at]gmail.com
+        <span role='img' aria-label='Email'>✉️</span> kyleetilley[at]gmail.com
         </p>
       </section>
     </Layout>
