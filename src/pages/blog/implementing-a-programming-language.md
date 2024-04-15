@@ -19,21 +19,47 @@ date: 2024-04-14
             - Thinking I could shortcut around implementing it using cells/car/cons. This worked until I tried to implement quoting syntax
             - Thinking of edge cases and writing enough tests
                 - Code coverage vs test coverage. Code coverage doesn't help you with projects like this
+                - I did find a number of test suites targetted at lisp like languages
             - No code editor extension or language server really hurt the development experience. Being able to use the language really really helps
     - Benefits gained from implementing Scheme and any improvements made since then
-        - Learning about lisp like languages
+        - Learning about the broad family of lisp like languages
         - Learning about S expressions, code as data, and Scheme/Lisp's macro system
+        - Learning more about lexical scoping alternatives
+        - Implemented tail call recursion optimization
         - Understanding how data we take for granted in dynamic interpreted languages are implemented
         - Learning about lexical analysis (converting text in to tokens) and parsing tokens in to abstract syntax trees (AST)
+        - Implemented syntax changes to make it my own dialect of Scheme
 3. Implementing "Locks"
     - Brief explanation of Lox and its purpose
-    - Description of method used to implement Lox and any challenges faced during implementation
-        - Implementing Bytecode Compiled Stacked Based VM
+        - Discovered Lox through "craftinginterpreters.com"
+        - Found an open source implementation of Lox https://github.com/ajeetdsouza/loxcraft
+            - Written in Rust
+            - Already had a language server implementation
+            - Already had an online playground implementation
+            - Worked with WebAssembly (WASM)
+    - Description of method used to implement Locks
+        - Bytecode Compiled Stacked Based VM
             - Brief explanation of the VM and its purpose
             - Description of method used to create VM and any challenges faced during implementation
             - Benefits gained from implementing VM and any improvements made since then
-            - Explanation of modifications made from open source implementation of Lox
-            - Benefits gained from implementing Lox and any improvements made since then
+    - Challenges faced during implementation
+        - Debugging recursive compiler and iterpreter
+            - Very easy to get lost
+        - Learning Rust
+        - Understanding the Lox implementation
+            - Why certain choices were made
+            - Lots of unsafe Rust
+            - Manual allocation from the VM's memory, data size, and segfaults
+    - Explanation of modifications made from open source implementation of Lox
+    - Benefits gained from implementing Locks and any improvements made since then
+        - Learned how byte code compiliation and stack based VMs work
+        - Implemented a VS Code extension to integrate the language server
+        - Dramatically improved the online playground
+            - Added the ability to display the lexical tokens for Locks code
+            - Added the ability to display the AST for Locks code
+            - Added "live" code examples that could display lexical tokens, AST or just run the code
+        - Learned to always provide a Docker image for languages and tools to make it easy to experiment with
+
 4. Implementing New Language from Scratch: "Egon"
     - Brief explanation of new language and its purpose
     - Description of method used to create new language and any challenges faced during implementation
