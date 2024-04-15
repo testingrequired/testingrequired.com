@@ -9,19 +9,22 @@ date: 2024-04-14
 1. Introduction
     - Explanation of why I would want to implement a programming language
     - Overview of different methods used for implementing languages mentioned in the blog post
-2. Implementing Scheme: "cid"
-    - Brief explanation of Scheme and its purpose
+2. Implementing My Own Scheme Dialect: "CID"
+    - Brief explanation of Scheme
+        - S expressions
+        - Code as data. Data as code.
+        - Macros
     - Description of method used to implement Scheme and any challenges faced during implementation
         - Method used
             - Written in typescript
             - Based largely on the Python implementation described here: https://norvig.com/lispy.html
         - Challenges
-            - Thinking I could shortcut around implementing it using cells/car/cons. This worked until I tried to implement quoting syntax
+            - Thinking I could shortcut around implementing cells/car/cons. This worked until I tried to implement quoting syntax
             - Thinking of edge cases and writing enough tests
                 - Code coverage vs test coverage. Code coverage doesn't help you with projects like this
                 - I did find a number of test suites targetted at lisp like languages
             - No code editor extension or language server really hurt the development experience. Being able to use the language really really helps
-    - Benefits gained from implementing Scheme and any improvements made since then
+    - Benefits gained from implementing Scheme
         - Learning about the broad family of lisp like languages
         - Learning about S expressions, code as data, and Scheme/Lisp's macro system
         - Learning more about lexical scoping alternatives
