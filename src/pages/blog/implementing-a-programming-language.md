@@ -50,6 +50,7 @@ date: 2024-04-14
             - Why certain choices were made
             - Lots of unsafe Rust
             - Manual allocation from the VM's memory, data size, and segfaults
+            - Garbage collection method: mark and sweep
     - Explanation of modifications made from open source implementation of Lox
     - Benefits gained from implementing Locks and any improvements made since then
         - Learned how byte code compiliation and stack based VMs work
@@ -59,10 +60,11 @@ date: 2024-04-14
             - Added the ability to display the AST for Locks code
             - Added "live" code examples that could display lexical tokens, AST or just run the code
         - Learned to always provide a Docker image for languages and tools to make it easy to experiment with
-
+        - Gave me a better appreciation for decisions made in other languages (like type erasure in Java)
 4. Implementing New Language from Scratch: "Egon"
     - Brief explanation of new language and its purpose
-    - Description of method used to create new language and any challenges faced during implementation
+    - Description of method used to create new language
+    - Challenges faced during implementation
     - Benefits gained from implementing new language and any improvements made since then
     - Connection between new language and open source project of third implementation
 5. Conclusion
