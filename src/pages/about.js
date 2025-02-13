@@ -8,14 +8,9 @@ export default function About() {
   return (
     <Layout>
       <img src={banner} alt="Me standing on stage giving a talk" />
-      <h2 style={{ fontSize: '2em' }}>Kylee Tilley</h2>
-
-      <section>
+      <div style={{ float: 'left' }}>
         <div
           style={{
-            float: 'left',
-            padding: '1em',
-            width: '10em',
             marginRight: '1em',
           }}
         >
@@ -23,40 +18,67 @@ export default function About() {
             src={me}
             style={{
               borderRadius: '50%',
-              minWidth: '7em',
-              width: '7em',
-              height: '7em',
+              minWidth: '14em',
+              width: '14em',
+              height: '14em',
             }}
             alt=""
           />
+        </div>
 
-          <ul>
+        <div>
+          <h2 style={{ fontSize: '2em' }}>Kylee Tilley</h2>
+
+          <ul
+            style={{
+              listStyleType: 'none',
+              padding: '0',
+              margin: '0',
+            }}
+          >
             <li>
-              <OutboundLink href="https://github.com/testingrequired">
-                github.com/testingrequired
+              <OutboundLink
+                href="https://github.com/testingrequired"
+                style={{ textDecoration: 'none' }}
+              >
+                🧑‍💻 github.com/testingrequired
               </OutboundLink>
             </li>
 
             <li>
-              <OutboundLink href="https://www.linkedin.com/in/kyleetilley/">
-                linkedin.com/in/kyleetilley
+              <OutboundLink
+                href="https://www.linkedin.com/in/kyleetilley/"
+                style={{ textDecoration: 'none' }}
+              >
+                👔 linkedin.com/in/kyleetilley
               </OutboundLink>
             </li>
 
             <li>
-              <OutboundLink href="https://bsky.app/profile/testingrequired.com">
+              <OutboundLink
+                href="https://bsky.app/profile/testingrequired.com"
+                style={{ textDecoration: 'none' }}
+              >
                 🦋 @testingrequired.com
               </OutboundLink>
             </li>
           </ul>
         </div>
+      </div>
 
-        <div style={{ fontSize: '1.15em' }}>
+      <section>
+        <div
+          style={{
+            fontSize: '1.1em',
+            textJustify: 'inter-character',
+            textAlign: 'justify',
+          }}
+        >
           <p>
-            Hi there! I’m Kylee Tilley, a software engineer with over 10 years
-            of professional experience. I started as a self-taught coder, making
-            webpages (Geocities 😍) and writing small utilities to make my IT
-            help desk job easier.
+            Hi there! I'm a software engineer with over 10 years of professional
+            experience. I started as a self-taught coder, making webpages
+            (Geocities 😍) and writing small utilities to make my IT help desk
+            job easier.
           </p>
 
           <p>
