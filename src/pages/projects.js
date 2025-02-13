@@ -80,7 +80,7 @@ export default function Projects() {
         </h3>
 
         <p>
-          A toy language branched from{' '}
+          A toy bytecode VM language branched from{' '}
           <a href="https://craftinginterpreters.com/the-lox-language.html">
             Lox
           </a>{' '}
