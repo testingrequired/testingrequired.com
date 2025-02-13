@@ -33,19 +33,19 @@ export default function About() {
           <ul>
             <li>
               <OutboundLink href="https://github.com/testingrequired">
-                Github
+                github.com/testingrequired
               </OutboundLink>
             </li>
 
             <li>
               <OutboundLink href="https://www.linkedin.com/in/kyleetilley/">
-                LinkedIn
+                linkedin.com/in/kyleetilley
               </OutboundLink>
             </li>
 
             <li>
               <OutboundLink href="https://bsky.app/profile/testingrequired.com">
-                Bluesky
+                🦋 @testingrequired.com
               </OutboundLink>
             </li>
           </ul>
