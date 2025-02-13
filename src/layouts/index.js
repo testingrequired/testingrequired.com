@@ -47,8 +47,8 @@ export default ({ children }) => (
 
               <NavMenu>
                 <Link to="/blog">Blog</Link>
-                <Link to="/talks">Talks</Link>
                 <Link to="/projects">Projects</Link>
+                <Link to="/talks">Talks</Link>
                 <Link to="/about">About</Link>
               </NavMenu>
             </Header>

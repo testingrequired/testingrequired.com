@@ -138,8 +138,9 @@ export default function Projects() {
           </li>
           <li>
             <a href="https://github.com/kyleect/locks#changes-made">
-              Full list of features and fixes
-            </a>
+              Full list of features and fixes.
+            </a>{' '}
+            Include several changes to syntax from the original project.
           </li>
         </ul>
       </section>
