@@ -8,19 +8,14 @@ export default function About() {
   return (
     <Layout>
       <img src={banner} alt="Me standing on stage giving a talk" />
-      <div style={{ float: 'left' }}>
-        <div
-          style={{
-            marginRight: '1em',
-          }}
-        >
+      <div style={{ float: 'left', marginRight: '3em', marginBottom: '1em' }}>
+        <div>
           <img
             src={me}
             style={{
               borderRadius: '50%',
-              minWidth: '14em',
-              width: '14em',
-              height: '14em',
+              width: '10em',
+              height: '10em',
             }}
             alt=""
           />
@@ -34,6 +29,7 @@ export default function About() {
               listStyleType: 'none',
               padding: '0',
               margin: '0',
+              fontSize: '1.1em',
             }}
           >
             <li>
@@ -50,7 +46,7 @@ export default function About() {
                 href="https://www.linkedin.com/in/kyleetilley/"
                 style={{ textDecoration: 'none' }}
               >
-                👔 linkedin.com/in/kyleetilley
+                👔 in/kyleetilley
               </OutboundLink>
             </li>
 
@@ -117,11 +113,11 @@ export default function About() {
           <p>
             Over my career, I've worked across multiple industries, helping
             organizations design and build greenfield applications, modernize
-            legacy systems, optimize workflows, and establish best practices in
-            development, testing, and delivery. My expertise spans the entire
-            software lifecycle—from early product discussions to defining robust
-            testing strategies, building automation frameworks, and mentoring
-            teams on implementing scalable, testable, maintainable software.
+            legacy systems, and establish best practices in development,
+            testing, and delivery. My expertise spans the entire software
+            lifecycle—from early product discussions to defining robust testing
+            strategies, building automation frameworks, and mentoring teams on
+            implementing scalable, testable, maintainable software.
           </p>
 
           <p>
