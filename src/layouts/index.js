@@ -39,7 +39,7 @@ export default ({ children }) => (
             <Header fullscreen={location.pathname === '/'}>
               <h1>
                 <Link to="/">
-                  <span style={{ whiteSpace: 'nowrap' }}>
+                  <span>
                     <Icon /> {site.siteMetadata.title}
                   </span>
                 </Link>
