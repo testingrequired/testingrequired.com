@@ -10,6 +10,7 @@ module.exports = {
       options: {
         path: `${__dirname}/src/pages`,
         name: 'pages',
+        start_url: '/',
       },
     },
     `gatsby-transformer-remark`,
