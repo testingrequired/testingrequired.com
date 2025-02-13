@@ -5,47 +5,153 @@ import { OutboundLink } from 'gatsby-plugin-google-analytics';
 export default function Projects() {
   return (
     <Layout>
-      <h2 style={{ fontSize: "2em" }}>Projects</h2>
+      <h2 style={{ fontSize: '2em' }}>Projects</h2>
 
       <section>
         <h3>
-          <OutboundLink href="https://github.com/testingrequired/bespin">
-            bespin
-          </OutboundLink>
-        </h3>
-
-        <p>A test framework engine</p>
-      </section>
-
-      <section>
-        <h3>
-          <OutboundLink href="https://github.com/testingrequired/restfile">
-            restfile
-          </OutboundLink>
-        </h3>
-
-        <p>A specification for storing HTTP requests in an easy to read and write file format</p>
-      </section>
-
-      <section>
-        <h3>
-          <OutboundLink href="https://testingrequired.github.io/selector-display/">
-            Selector Display
+          <OutboundLink href="https://github.com/testingrequired/reqlang">
+            📄 Request Language (reqlang)
           </OutboundLink>
         </h3>
 
         <p>
-          Built for testing how HTML and CSS selectors work together. Visualizes
-          selector results against a blob of HTML.
+          A file format specification for defining HTTP requests, response
+          assertions, and associated data/configuration in "request files".
         </p>
 
         <ul>
           <li>
-            <OutboundLink href="https://testingrequired.github.io/selector-display/">
-              https://testingrequired.github.io/selector-display/
-            </OutboundLink>
+            Declare what prompts, secrets, and environment specific variables a
+            request needs.
+          </li>
+          <li>
+            Write requests using{' '}
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages#http_requests">
+              HTTP Request
+            </a>{' '}
+            messages.
+          </li>
+          <li>
+            Write tests using{' '}
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages#http_responses">
+              HTTP Response
+            </a>{' '}
+            messages.
+          </li>
+          <li>
+            A{' '}
+            <a href="https://github.com/testingrequired/reqlang#vs-code">
+              language extension
+            </a>{' '}
+            for Visual Studio Code providing an in-editor REST client. The
+            language server also provides language diagnostics.
           </li>
         </ul>
+      </section>
+
+      <section>
+        <h3>
+          <OutboundLink href="https://github.com/testingrequired/reqlang">
+            📕 The Testing Book
+          </OutboundLink>
+        </h3>
+
+        <p>A (work in progress) software engineering guide to testing.</p>
+      </section>
+
+      <section>
+        <h3>
+          <OutboundLink href="https://github.com/egonlang/egonlang">
+            👻 Egon
+          </OutboundLink>
+        </h3>
+
+        <p>
+          A (toy) statically typed interpreted language for learning
+          type-checking and type inference.
+        </p>
+      </section>
+
+      <section>
+        <h3>
+          <OutboundLink href="https://github.com/kyleect/locks">
+            🔓 Locks
+          </OutboundLink>
+        </h3>
+
+        <p>
+          A toy language branched from{' '}
+          <a href="https://craftinginterpreters.com/the-lox-language.html">
+            Lox
+          </a>{' '}
+          to learn implementing new language syntax.
+        </p>
+
+        <p>
+          Forked from{' '}
+          <a href="https://github.com/ajeetdsouza/loxcraft">loxcraft</a> with
+          additional features and fixes:
+        </p>
+
+        <ul>
+          <li>
+            <a href="https://kyleect.github.io/locks/#/?code=DYUwLgBAhhC8EEYBMBmA3EA">
+              Shareable links
+            </a>{' '}
+            for the online playground.
+          </li>
+          <li>
+            Implemented an{' '}
+            <a href="https://kyleect.github.io/locks/#/docs#example">
+              embeddable version
+            </a>{' '}
+            of the playground's editor.
+          </li>
+          <li>
+            Interactive language{' '}
+            <a href="https://kyleect.github.io/locks/#/docs">documentation</a>{' '}
+            using the embedded playground editor for{' '}
+            <a href="https://kyleect.github.io/locks/#/docs#functions-as-values">
+              runnable
+            </a>{' '}
+            <a href="https://kyleect.github.io/locks/#/docs#closures">code</a>{' '}
+            <a href="https://kyleect.github.io/locks/#/docs#string-concatenation">
+              examples
+            </a>
+            .
+          </li>
+          <li>
+            A{' '}
+            <a href="https://github.com/kyleect/locks#vs-code-extension">
+              language extension
+            </a>{' '}
+            for Visual Studio Code. It integrates with the language server to
+            provide the editor with language diagnostics. The extension also
+            provides utility like viewing AST when hover over code.
+          </li>
+          <li>
+            <a href="https://github.com/kyleect/locks/blob/main/Dockerfile">
+              Dockerized
+            </a>{' '}
+            the <code>locks</code> binary to lower the barrier for trying out
+            the language.
+          </li>
+          <li>
+            <a href="https://github.com/kyleect/locks#changes-made">
+              Full list of features and fixes
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>
+          <OutboundLink href="https://github.com/testingrequired/bespin">
+            🌌 bespin
+          </OutboundLink>
+        </h3>
+
+        <p>A framework for test frameworks writting in Typescript.</p>
       </section>
     </Layout>
   );
