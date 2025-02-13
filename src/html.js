@@ -11,6 +11,10 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <meta
+          name="description"
+          content="The personal website of Kylee Tilley"
+        />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
