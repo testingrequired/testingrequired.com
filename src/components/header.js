@@ -20,15 +20,19 @@ export default styled.div`
     margin-bottom: ${props => (props.fullscreen ? `.25em` : `0`)};
 
     @media (max-width: 800px) {
-      font-size: ${props => (props.fullscreen ? `4em` : `2.5em`)};
+      font-size: ${props => (props.fullscreen ? `4em` : `3em`)};
+    }
+
+    @media (max-width: 650px) {
+      font-size: ${props => (props.fullscreen ? `2em` : `2.5em`)};
+    }
+
+    @media (max-width: 650px) {
+      font-size: ${props => (props.fullscreen ? `2em` : `2.5em`)};
     }
 
     @media (max-width: 400px) {
-      font-size: ${props => (props.fullscreen ? `4em` : `1.75em`)};
+      font-size: ${props => (props.fullscreen ? `1.75em` : `1.75em`)};
     }
-  }
-
-  @media (max-width: 800px) {
-    margin-bottom: 1em;
   }
 `;

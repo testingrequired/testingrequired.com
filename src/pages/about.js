@@ -45,9 +45,9 @@ const Picture = styled.img`
     margin-top: 0;
     margin-left: 0;
 
-    width: 11em;
-    min-width: 11em;
-    height: 11em;
+    width: 9em;
+    min-width: 9em;
+    height: 9em;
   }
 `;
 
