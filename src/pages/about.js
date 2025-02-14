@@ -13,17 +13,24 @@ const AboutMeHeader = styled.div`
 
   @media (max-width: 600px) {
     float: none;
-    margin-bottom: 3em;
+    margin-bottom: 0em;
+  }
+
+  @media (max-width: 500px) {
+    margin-bottom: 0em;
   }
 `;
 
 const Picture = styled.img`
   border-radius: 50%;
-  width: 8em;
-  min-width: 8em;
-  height: 8em;
+  width: 13em;
+  min-width: 13em;
+  height: 13em;
 
   @media (max-width: 600px) {
+    width: 8em;
+    min-width: 8em;
+    height: 8em;
     float: right;
     margin-left: 2em;
   }
@@ -35,6 +42,12 @@ const Picture = styled.img`
   @media (max-width: 475px) {
     display: block;
     float: none;
+    margin-top: 0;
+    margin-left: 0;
+
+    width: 11em;
+    min-width: 11em;
+    height: 11em;
   }
 `;
 
@@ -44,16 +57,11 @@ const Blurb = styled.section`
   letter-spacing: 0.01em;
   text-align: justify;
   text-justify: inter-character;
+  line-height: 1.4em;
 
   @media (max-width: 600px) {
     letter-spacing: inherit;
-    font-size: 1.2em;
-  }
-
-  @media (max-width: 500px) {
-  }
-
-  @media (max-width: 475px) {
+    line-height: inherit;
   }
 `;
 
