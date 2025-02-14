@@ -65,10 +65,17 @@ const Blurb = styled.section`
   }
 `;
 
+const BannerImage = styled.img`
+  @media (max-width: 475px) {
+    display: none;
+  }
+`;
+
 export default function About() {
   return (
     <Layout>
-      <img src={banner} alt="Me standing on stage giving a talk" />
+      <BannerImage src={banner} alt="Me standing on stage giving a talk" />
+
       <AboutMeHeader>
         <div>
           <Picture src={me} alt="" />
