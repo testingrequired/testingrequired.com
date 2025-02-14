@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function HTML(props) {
   return (
-    <html {...props.htmlAttributes} lang="en">
+    <html {...props.htmlAttributes} lang="en" prefix="og: https://ogp.me/ns#">
       <head>
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
@@ -13,8 +13,9 @@ export default function HTML(props) {
         />
         <meta
           name="description"
-          content="The personal website of Kylee Tilley"
+          content="Changing hearts and minds about development and testing"
         />
+        <meta property="og:locale" content="en_US" />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
