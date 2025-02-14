@@ -12,6 +12,7 @@ const AboutMeHeader = styled.div`
 
   @media (max-width: 600px) {
     float: none;
+    margin-bottom: 3em;
   }
 `;
 
