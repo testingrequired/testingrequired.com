@@ -17,6 +17,7 @@ export default function HTML(props) {
         />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_US" />
+        <meta property="og:image" content="/opengraph_preview.png" />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
