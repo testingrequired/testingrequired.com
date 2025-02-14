@@ -16,21 +16,34 @@ const AboutMeHeader = styled.div`
   }
 `;
 
+const Picture = styled.img`
+  border-radius: 50%;
+  width: 8em;
+  min-width: 8em;
+  height: 8em;
+
+  @media (max-width: 600px) {
+    float: right;
+    margin-left: 2em;
+  }
+
+  @media (max-width: 500px) {
+    float: right;
+  }
+
+  @media (max-width: 475px) {
+    display: block;
+    float: none;
+  }
+`;
+
 export default function About() {
   return (
     <Layout>
       <img src={banner} alt="Me standing on stage giving a talk" />
       <AboutMeHeader>
         <div>
-          <img
-            src={me}
-            style={{
-              borderRadius: '50%',
-              width: '10em',
-              height: '10em',
-            }}
-            alt=""
-          />
+          <Picture src={me} alt="" />
         </div>
 
         <div>
