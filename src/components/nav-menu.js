@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import InlineList from './inline-list';
 
 const NavMenuStyle = styled(InlineList)`
-  display: flex;
+  display: none;
   justify-content: center;
   flex-wrap: wrap;
   font-size: 1.3em;
