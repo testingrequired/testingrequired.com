@@ -1,10 +1,21 @@
 import React from 'react';
 import Layout from '../layouts';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
+import { Helmet } from 'react-helmet';
 
-export default function Talks() {
+export default function Talks({ data }) {
+  const { siteMetadata } = data.site;
+  const title = `Talks - ${siteMetadata.title}`;
+
   return (
     <Layout>
+      <Helmet>
+        <title>{title}</title>
+
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content="A list of talks I've given" />
+      </Helmet>
+
       <h2 style={{ fontSize: '2em' }}>Talks</h2>
 
       <ul>
@@ -82,3 +93,13 @@ export default function Talks() {
     </Layout>
   );
 }
+
+export const pageQuery = graphql`
+  query TalksPage {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`;

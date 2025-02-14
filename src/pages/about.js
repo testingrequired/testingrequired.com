@@ -4,6 +4,7 @@ import me from '../images/me.jpg';
 import banner from '../images/about-me-banner.jpg';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 const AboutMeHeader = styled.div`
   float: left;
@@ -71,9 +72,22 @@ const BannerImage = styled.img`
   }
 `;
 
-export default function About() {
+export default function About({ data }) {
+  const { siteMetadata } = data.site;
+  const title = `About Me - ${siteMetadata.title}`;
+
   return (
     <Layout>
+      <Helmet>
+        <title>{title}</title>
+
+        <meta property="og:title" content={title} />
+        <meta
+          property="og:description"
+          content="A brief introduction to my background"
+        />
+      </Helmet>
+
       <BannerImage src={banner} alt="Me standing on stage giving a talk" />
 
       <AboutMeHeader>
@@ -182,3 +196,13 @@ export default function About() {
     </Layout>
   );
 }
+
+export const pageQuery = graphql`
+  query AboutPage {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`;

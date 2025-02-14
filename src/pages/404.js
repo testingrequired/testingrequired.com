@@ -1,13 +1,39 @@
 import React from 'react';
 import Layout from '../layouts';
+import { Helmet } from 'react-helmet';
 
-const NotFoundPage = () => (
-  <Layout>
-    <div>
-      <h1>NOT FOUND</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-    </div>
-  </Layout>
-);
+const NotFoundPage = ({ data }) => {
+  const { siteMetadata } = data.site;
+  const title = `Page Not Found! - ${siteMetadata.title}`;
+
+  return (
+    <Layout>
+      <Helmet>
+        <title>{title}</title>
+
+        <meta property="og:title" content={title} />
+        <meta
+          property="og:description"
+          content="A brief introduction to my background"
+        />
+      </Helmet>
+
+      <div>
+        <h1>Page Not Found</h1>
+        <p>Please check the url and try again.</p>
+      </div>
+    </Layout>
+  );
+};
 
 export default NotFoundPage;
+
+export const pageQuery = graphql`
+  query NotFoundPage {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`;
