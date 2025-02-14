@@ -14,7 +14,7 @@ const NotFoundPage = ({ data }) => {
         <meta property="og:title" content={title} />
         <meta
           property="og:description"
-          content="A brief introduction to my background"
+          content="Information about myself and my background"
         />
       </Helmet>
 
