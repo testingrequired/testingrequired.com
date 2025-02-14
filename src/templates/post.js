@@ -5,12 +5,20 @@ import Layout from '../layouts';
 
 export default function Template({ data }) {
   const { siteMetadata } = data.site;
-  const { frontmatter, html } = data.markdownRemark;
+  const { frontmatter, html, excerpt } = data.markdownRemark;
   const { title, date } = frontmatter;
 
   return (
     <Layout>
-      <Helmet title={`${title} - ${siteMetadata.title}`} />
+      <Helmet>
+        <title>{`${title} - ${siteMetadata.title}`}</title>
+
+        <meta
+          property="og:title"
+          content={`${title} - ${siteMetadata.title}`}
+        />
+        <meta property="og:description" content={excerpt} />
+      </Helmet>
 
       <div className="blog-post-container">
         <div className="blog-post">
@@ -31,6 +39,7 @@ export const pageQuery = graphql`
   query BlogPostByPath($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
+      excerpt
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title

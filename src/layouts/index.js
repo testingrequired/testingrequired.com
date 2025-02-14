@@ -31,7 +31,6 @@ export default ({ children }) => (
               <title>{site.siteMetadata.title}</title>
               <link rel="me" href="https://mastodon.social/@testingrequired" />
 
-              <meta property="og:title" content={site.siteMetadata.title} />
               <meta property="og:url" content={location.href} />
             </Helmet>
 
