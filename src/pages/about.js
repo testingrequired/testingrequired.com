@@ -3,12 +3,23 @@ import Layout from '../layouts';
 import me from '../images/me.jpg';
 import banner from '../images/about-me-banner.jpg';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
+import styled from 'styled-components';
+
+const AboutMeHeader = styled.div`
+  float: left;
+  margin-right: 3em;
+  margin-bottom: 0.5em;
+
+  @media (max-width: 600px) {
+    float: none;
+  }
+`;
 
 export default function About() {
   return (
     <Layout>
       <img src={banner} alt="Me standing on stage giving a talk" />
-      <div style={{ float: 'left', marginRight: '3em', marginBottom: '1em' }}>
+      <AboutMeHeader>
         <div>
           <img
             src={me}
@@ -60,7 +71,7 @@ export default function About() {
             </li>
           </ul>
         </div>
-      </div>
+      </AboutMeHeader>
 
       <section>
         <div
