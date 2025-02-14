@@ -15,6 +15,7 @@ export default function HTML(props) {
           name="description"
           content="Changing hearts and minds about development and testing"
         />
+        <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_US" />
         {props.headComponents}
       </head>
