@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 
 export default function HTML(props) {
   return (
-    <html {...props.htmlAttributes} lang="en" prefix="og: https://ogp.me/ns#">
+    <html
+      {...props.htmlAttributes}
+      lang="en"
+      prefix="
+          og: https://ogp.me/ns#
+          article: https://ogp.me/ns/article#"
+    >
       <head>
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
@@ -15,7 +21,6 @@ export default function HTML(props) {
           name="description"
           content="Changing hearts and minds about development and testing"
         />
-        <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:site_name" content="Testing Required" />
         <meta property="og:image" content="/opengraph_preview.png" />

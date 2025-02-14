@@ -18,6 +18,9 @@ export default function Template({ data }) {
           content={`${title} - ${siteMetadata.title}`}
         />
         <meta property="og:description" content={excerpt} />
+
+        <meta property="og:type" content="article" />
+        <meta property="article:author" content="Kylee Tilley" />
       </Helmet>
 
       <div className="blog-post-container">
