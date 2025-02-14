@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export default styled.div`
   background: #333;
   color: #fff;
-  margin-bottom: ${props => (props.fullscreen ? `0` : `3em`)};
+  margin-bottom: 0;
   text-align: center;
   padding: 1em;
   height: ${props => (props.fullscreen ? `100vh` : `inherit`)};
@@ -20,8 +20,11 @@ export default styled.div`
     margin-bottom: ${props => (props.fullscreen ? `.25em` : `0`)};
 
     @media (max-width: 800px) {
-      font-size: ${props => (props.fullscreen ? `3em` : `2.5em`)};
-      margin-bottom: 0;
+      font-size: ${props => (props.fullscreen ? `4em` : `2.5em`)};
+    }
+
+    @media (max-width: 400px) {
+      font-size: ${props => (props.fullscreen ? `4em` : `1.75em`)};
     }
   }
 

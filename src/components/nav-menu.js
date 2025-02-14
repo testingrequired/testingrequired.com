@@ -7,6 +7,13 @@ const NavMenuStyle = styled(InlineList)`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  font-size: 1.3em;
+  margin: 0;
+  margin-top: 0.5em;
+
+  @media (max-width: 400px) {
+    font-size: 1em;
+  }
 `;
 
 export default function NavMenu({ children }) {
